@@ -4,11 +4,11 @@
     <Filter Include="template code">
       <UniqueIdentifier>{bf32dd6e-4be7-4889-8ac6-49e7ee163c40}</UniqueIdentifier>
     </Filter>
-    <Filter Include="inc">
-      <UniqueIdentifier>{5a3b402f-02fe-4dcc-b807-35745d409848}</UniqueIdentifier>
+    <Filter Include="Inc">
+      <UniqueIdentifier>{1123e165-94b2-4fda-b3b0-bb69b3b8521b}</UniqueIdentifier>
     </Filter>
     <Filter Include="src">
-      <UniqueIdentifier>{f1baa22e-9edd-447e-8a93-5588ccb41d52}</UniqueIdentifier>
+      <UniqueIdentifier>{664d0ce5-268c-4019-9e93-620dc7256dae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -17,37 +17,55 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inc\game.h">
-      <Filter>inc</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\surface.h">
-      <Filter>inc</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\template.h">
-      <Filter>inc</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Player.h">
-      <Filter>inc</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\Ball.h">
-      <Filter>inc</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\game.cpp">
+    <ClCompile Include="src\Ball.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\surface.cpp">
+    <ClCompile Include="src\Bullet.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\template.cpp">
+    <ClCompile Include="src\Menu.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Player.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Ball.cpp">
+    <ClCompile Include="src\Collision.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\template.cpp">
+      <Filter>template code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\surface.cpp">
+      <Filter>template code</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\Ball.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Bullet.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Collision.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Menu.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\Player.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\surface.h">
+      <Filter>template code</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\template.h">
+      <Filter>template code</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\game.h">
+      <Filter>Inc</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

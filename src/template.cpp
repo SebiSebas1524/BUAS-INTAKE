@@ -327,8 +327,7 @@ int main( int argc, char **argv )
 	SDL_Texture* frameBuffer = SDL_CreateTexture( renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, ScreenWidth, ScreenHeight );
 #endif
 	int exitapp = 0;
-	game = new Game();
-	game->SetTarget( surface );
+	game = new Game( surface );
 	timer t;
 	t.reset();
 	while (!exitapp) 
@@ -377,18 +376,18 @@ int main( int argc, char **argv )
 				exitapp = 1;
 				break;
 			case SDL_KEYDOWN:
-				if (event.key.keysym.sym == SDLK_ESCAPE) 
-				{
-					exitapp = 1;
-					// find other keys here: http://sdl.beuc.net/sdl.wiki/SDLKey
-				}
+				//if (event.key.keysym.sym == SDLK_ESCAPE) 
+				//{
+				//	exitapp = 1;
+				//	// find other keys here: http://sdl.beuc.net/sdl.wiki/SDLKey
+				//}
 				game->KeyDown( event.key.keysym.scancode );
 				break;
 			case SDL_KEYUP:
 				game->KeyUp( event.key.keysym.scancode );
 				break;
 			case SDL_MOUSEMOTION:
-				game->MouseMove( event.motion.xrel, event.motion.yrel );
+				game->MouseMove( event.motion.x, event.motion.y );
 				break;
 			case SDL_MOUSEBUTTONUP:
 				game->MouseUp( event.button.button );

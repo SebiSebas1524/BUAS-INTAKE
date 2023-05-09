@@ -605,8 +605,6 @@ void Font::Print( Surface* a_Target, char* a_Text, int a_X, int a_Y, bool clip )
 					t += m_Surface->GetPitch(), d += a_Target->GetPitch();
 				}
 			}
-			cx += m_Width[c] + 2;
-			if ((int)(cx + a_X) >= a_Target->GetPitch()) break;
 		}
 	}
 }

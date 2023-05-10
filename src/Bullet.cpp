@@ -4,8 +4,11 @@
 
 void Bullet::drawBullet(Tmpl8::Surface* surface) {
 	bullet.Draw(surface,static_cast<int>(pos.x), static_cast<int>(pos.y));
-	surface->Line(startPos.x+bullet.GetWidth()/2, startPos.y + bullet.GetHeight() + bullet.GetHeight()/4,
-		pos.x +bullet.GetWidth()/2, pos.y + bullet.GetHeight()/5, 0xffffff);
+	surface->Line(startPos.x+bullet.GetWidth()/2, startPos.y + bullet.GetHeight() + bullet.GetHeight()/4,  
+		pos.x +bullet.GetWidth()/2, pos.y + bullet.GetHeight()/5, 0xffffff);    //this is the trace from the bullet middel position
+#ifdef _DEBUG
+	surface->Box(static_cast<int>(pos.x), static_cast<int>(pos.y ), static_cast<int>(pos.x + bullet.GetWidth() ), static_cast<int>(pos.y + bullet.GetHeight() - 25), 0xffff00);
+#endif
 }
 void Bullet::animation() {
 	bullet.SetFrame((unsigned int) ani);
@@ -15,9 +18,6 @@ void Bullet::animation() {
 void Bullet::update(Tmpl8::Surface* surface,float delta) {
 		drawBullet(surface);
 		animation();
-		pos.y -= speed * delta;
+		pos.y -= speed * delta;  //bullet going to the top
 		
-}
-void Bullet::startBullet(Tmpl8::Surface* surface) {
-	bullet.Draw(surface,static_cast<int>(startPos.x), static_cast<int>(startPos.y));
 }

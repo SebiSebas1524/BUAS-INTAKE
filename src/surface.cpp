@@ -570,43 +570,46 @@ void Font::Centre( Surface* a_Target, char* a_Text, int a_Y )
 	Print( a_Target, a_Text, x, a_Y );
 }
  
-void Font::Print( Surface* a_Target, char* a_Text, int a_X, int a_Y, bool clip )
+void Font::Print(Surface* a_Target, char* a_Text, int a_X, int a_Y, bool clip)
 {
 	Pixel* b = a_Target->GetBuffer() + a_X + a_Y * a_Target->GetPitch();
 	Pixel* s = m_Surface->GetBuffer();
 	unsigned int i, cx;
 	int x, y;
 	if (((a_Y + m_Height) < m_CY1) || (a_Y > m_CY2)) return;
-	for ( cx = 0, i = 0; i < strlen( a_Text ); i++ )
+	for (cx = 0, i = 0; i < strlen(a_Text); i++)
 	{
 		if (a_Text[i] == ' ') cx += 4; else
 		{
 			int c = m_Trans[(unsigned char)a_Text[i]];
-			Pixel* t = s + m_Offset[c], *d = b + cx;
+			Pixel* t = s + m_Offset[c], * d = b + cx;
 			if (clip)
 			{
-				for ( y = 0; y < m_Height; y++ )
+				for (y = 0; y < m_Height; y++)
 				{
 					if (((a_Y + y) >= m_CY1) && ((a_Y + y) <= m_CY2))
 					{
-						for ( x = 0; x < m_Width[c]; x++ ) 
-							if ((t[x]) && ((x + (int)cx + a_X) < a_Target->GetPitch())) 
-								d[x] = AddBlend( t[x], d[x] );
+						for (x = 0; x < m_Width[c]; x++)
+							if ((t[x]) && ((x + (int)cx + a_X) < a_Target->GetPitch()))
+								d[x] = AddBlend(t[x], d[x]);
 					}
 					t += m_Surface->GetPitch(), d += a_Target->GetPitch();
 				}
 			}
 			else
 			{
-				for ( y = 0; y < m_Height; y++ )
+				for (y = 0; y < m_Height; y++)
 				{
 					if (((a_Y + y) >= m_CY1) && ((a_Y + y) <= m_CY2))
-						for ( x = 0; x < m_Width[c]; x++ ) if (t[x]) d[x] = AddBlend( t[x], d[x] );
+						for (x = 0; x < m_Width[c]; x++) if (t[x]) d[x] = AddBlend(t[x], d[x]);
 					t += m_Surface->GetPitch(), d += a_Target->GetPitch();
 				}
 			}
+			cx += m_Width[c] + 2;
+			if ((int)(cx + a_X) >= a_Target->GetPitch()) break;
 		}
 	}
 }
+
 
 }; // namespace Tmpl8

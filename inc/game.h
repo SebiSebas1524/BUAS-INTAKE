@@ -1,6 +1,8 @@
 #pragma once
 #include "template.h"
 #include "Menu.h"
+#include "Ball.h"
+#include <Sound.hpp>
 
 namespace Tmpl8 {
 
@@ -8,9 +10,8 @@ class Surface;
 class Game
 {
 public:
-	Game(Surface* screen);
 
-	//void SetTarget( Surface* surface ) { screen = surface; }
+	void SetTarget( Surface* surface ) { m_screen = surface; }
 	void Init();
 	void Shutdown();
 	void Tick( float deltaTime );
@@ -21,16 +22,28 @@ public:
 	void KeyUp( int key ) { /* implement if you want to handle keys */ }
 	void KeyDown( int key ) { /* implement if you want to handle keys */ }
 
-	
+	void colisionBall_Player(Ball& ball);
+	void colisionBall_Bullet(Ball& ball);
+
+	enum GameLevel { //difficulty level
+		EASY,
+		MEDIUM,
+		HARD
+	};
 
 private:
-	Surface* m_screen{ nullptr };
+	Surface* m_screen;
+	float delta;
+	float timer{ 0 };
 
 	vec2 mousePos;
 
+	GameLevel level;
 	Menu::Type menuType;
 	Menu menu;
-	bool inMenu;
+	bool inMenu{ true };
+	Audio::Sound bgMusic{ "assets/SFX/underwater.wav", Audio::Sound::Type::Stream };
+	Audio::Sound pop{ "assets/SFX/pop.wav" };
 };
 
 }; // namespace Tmpl8
@@ -38,3 +51,4 @@ private:
 
 
 //https://pzuh.itch.io/free-bubble-game-button-pack  ::butons
+//https://sfxr.me

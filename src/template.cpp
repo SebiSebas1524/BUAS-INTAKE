@@ -319,7 +319,10 @@ int main( int argc, char **argv )
 #ifdef FULLSCREEN
 	window = SDL_CreateWindow(TemplateVersion, 100, 100, ScreenWidth, ScreenHeight, SDL_WINDOW_FULLSCREEN );
 #else
-	window = SDL_CreateWindow(TemplateVersion, 100, 100, ScreenWidth, ScreenHeight, SDL_WINDOW_SHOWN );
+	// SDL_WINDOWPOS_CENTERED centers the window according to the user's screen resolution
+	// taken from the SDL documentation for the CreateWindow function
+	// https://wiki.libsdl.org/SDL2/SDL_CreateWindow
+	window = SDL_CreateWindow(TemplateVersion, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, ScreenWidth, ScreenHeight, SDL_WINDOW_SHOWN );
 #endif
 	surface = new Surface( ScreenWidth, ScreenHeight );
 	surface->Clear( 0 );
@@ -327,7 +330,13 @@ int main( int argc, char **argv )
 	SDL_Texture* frameBuffer = SDL_CreateTexture( renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, ScreenWidth, ScreenHeight );
 #endif
 	int exitapp = 0;
-	game = new Game( surface );
+	game = new Game();
+	game->SetTarget( surface );
+
+	// https://wiki.libsdl.org/SDL2/SDL_SetWindowIcon
+	SDL_Surface* icon = SDL_LoadBMP("assets/Sprites/icon.bmp");
+	SDL_SetWindowIcon(window, icon);
+
 	timer t;
 	t.reset();
 	while (!exitapp) 

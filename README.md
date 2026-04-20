@@ -1,8 +1,10 @@
 # Plastic Trouble - BUas CMGT Programming Intake Assignment 2023
 This is my game for the 2023 Programming Intake for Breda University of Applied Sciences CMGT.
 
+https://youtu.be/im3b1-_ueO4
+
 # Summary
-**Plastic Trouble** is a 2D Game which has the ìBounceî theme, exactly this year's intake assignment theme. You are a sea pickle and you want to clean sea water. The objective of the game is to pop all the balloons with plastic and get a good score. If you get hit by a balloon you will die. You have three difficulties and you need to pass them if you want to win.
+**Plastic Trouble** is a 2D Game which has the ‚ÄúBounce‚Äù theme, exactly this year's intake assignment theme. You are a sea pickle and you want to clean sea water. The objective of the game is to pop all the balloons with plastic and get a good score. If you get hit by a balloon you will die. You have three difficulties and you need to pass them if you want to win.
 # Instructions
 A/D or </> - move (left or right)    
 SPACE - shoot    
